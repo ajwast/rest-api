@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(245, 243, 241);
+  color: #222;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(7, 7, 177, 0.863);
+  color: rgb(228, 215, 215);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: double;
+}
+
+.main-nav {
+  display: flex;
+  gap: 1rem;
+  border: 1px, double;
+  padding: 1rem;
+}
+
+.main-nav > a {
+  color: rgb(228, 215, 215);
+  text-decoration: none;
+  /* font-size: 1.2rem; */
+  border: 1px inset;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.main-nav > a:hover {
+  background-color: white;
+  color: #222;
+}
+
+.auth-form {
+  background-color: rgba(220, 227, 230, 0.719);
+  margin: auto;
+  margin-top: 5rem;
+  padding: 1rem;
+
+  border: #222 outset;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+}
+
+.auth-form > input {
+  margin-bottom: 1rem;
+}
+
+button {
+  border-radius: 10px;
+  max-width: 7rem;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-left: 70%;
+}
+
+#post-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  max-height: 30rem;
+  margin: auto;
+}

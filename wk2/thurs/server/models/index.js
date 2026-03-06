@@ -17,8 +17,19 @@ function defineUser(sequelize) {
   return User;
 }
 
+function definePost(sequelize) {
+  const Post = sequelize.define("Post", {
+    content: DataTypes.STRING,
+  });
+  return Post;
+}
+
 const User = defineUser(sequelize);
+const Post = definePost(sequelize);
 
-sequelize.sync({ force: true });
+Post.belongsTo(User);
+User.hasMany(Post);
 
-export { sequelize, User };
+sequelize.sync({ alter: true });
+
+export { sequelize, User, Post };
