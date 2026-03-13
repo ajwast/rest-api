@@ -1,30 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
-function sum(num1, num2) {
-  result = Number(num1) + Number(num2);
-  if (isNaN(result)) {
-    return "Can only sum number inputs";
-  }
-  return result;
-}
-
-function multiply(num1, num2) {
-  result = Number(num1) * Number(num2);
-  if (isNaN(result)) {
-    return "Can only receive number inputs";
-  }
-  return result;
-}
-
-function isPrime(num) {
-  for (let i = 2; i < num; i++) {
-    if (num % i === 0) {
-      return false;
-    }
-  }
-  return true;
-}
+const { sum, multiply, isPrime } = require("../utils/math");
 
 router.post("/sum", (req, res) => {
   const { num1, num2 } = req.body;
