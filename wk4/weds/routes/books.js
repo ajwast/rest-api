@@ -10,11 +10,15 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { title } = req.body;
+  if (!title) {
+    return res.status(400).json({ message: "Title cannot be empty" });
+  }
   try {
     const newBook = await Book.create({
       title,
     });
-    res.status(201).json({ message: `Book added: ${title}` });
+    console.log(newBook);
+    res.status(201).json({ message: `Book added: ${title}`, data: newBook });
   } catch (e) {
     console.log(e);
     res.status(400).json({ message: "Error. Book already in database" });
