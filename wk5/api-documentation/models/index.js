@@ -16,11 +16,15 @@ const Album = sequelize.define("album", {
   title: { type: DataTypes.STRING, allowNull: false, unique: true },
 });
 
+const User = sequelize.define("user", {
+  username: { type: DataTypes.STRING, allowNull: false, unique: true },
+  password: DataTypes.STRING,
+  salt: DataTypes.STRING,
+});
+
 Album.belongsTo(Artist);
 Artist.hasMany(Album);
 
-if (!process.env.NODE_ENV == "test") {
-  sequelize.sync({ alter: true });
-}
+sequelize.sync({ alter: true });
 
-module.exports = { sequelize, Album, Artist };
+module.exports = { sequelize, Album, Artist, User };

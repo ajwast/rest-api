@@ -20,6 +20,24 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   // #swagger.description = "Create new DB entry for an artist"
   // #swagger.tags = ["Artists"]
+  /* #swagger.parameters: [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "artist": {
+                  "type": "string",
+                  "example": "Amy Winehouse"
+                }
+              }
+            }
+          }
+        ]
+  
+  
+  */
   try {
     const { artist } = req.body;
     if (!artist) {

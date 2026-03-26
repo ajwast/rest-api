@@ -2,6 +2,17 @@ const { Router } = require("express");
 const { Album, Artist } = require("../models/index.js");
 const router = Router();
 
+const jwt = require("jsonwebtoken");
+
+function validateUser() {
+  const { token } = req.body;
+  if (!token) {
+    return res.status(401).json({ message: "Invalid user" });
+  }
+  const user = jwt.verify(token, process.env.SECRET);
+  res.send(user);
+}
+
 router.get("/", async (req, res) => {
   // #swagger.description = "Gets all albums from DB. Limited to 10"
   // #swagger.tags = ["Albums"]
@@ -19,9 +30,31 @@ router.get("/:id", async (req, res) => {
   res.status(200).json({ foundAlbum });
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validateUser, async (req, res) => {
   // #swagger.description = "Add a new album to the DB"
   // #swagger.tags = ["Albums"]
+  /*
+  #swagger.parameters: [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Ride the Lightning"
+                },
+                "artist": {
+                  "type": "string",
+                  "example": "Metallica"
+                }
+              }
+            }
+          }
+        ]
+   */
+
   try {
     const { title, artist } = req.body;
     if (!title || !artist) {
