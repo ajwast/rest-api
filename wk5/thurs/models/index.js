@@ -21,7 +21,7 @@ const User = sequelize.define("user", {
 
 const Game = sequelize.define("game", {
   title: { type: DataTypes.STRING, allowNull: false },
-  price: { type: DataTypes.DECIMAL, allowNull: false },
+  price: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
 });
 
 sequelize.sync({ alter: true });
